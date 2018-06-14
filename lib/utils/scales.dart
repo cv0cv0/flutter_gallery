@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GalleryTextScaleValue {
-  const GalleryTextScaleValue(this.scale, this.label);
+class TextScaleValue {
+  const TextScaleValue(this.scale, this.label);
 
   final double scale;
   final String label;
@@ -21,10 +21,10 @@ class GalleryTextScaleValue {
   }
 }
 
-const kAllGalleryTextScaleValues = <GalleryTextScaleValue>[
-  GalleryTextScaleValue(null, 'System Default'),
-  GalleryTextScaleValue(0.8, 'Small'),
-  GalleryTextScaleValue(1.0, 'Normal'),
-  GalleryTextScaleValue(1.3, 'Large'),
-  GalleryTextScaleValue(2.0, 'Huge'),
+const kAllTextScaleValues = <TextScaleValue>[
+  TextScaleValue(null, 'System Default'),
+  TextScaleValue(0.8, 'Small'),
+  TextScaleValue(1.0, 'Normal'),
+  TextScaleValue(1.3, 'Large'),
+  TextScaleValue(2.0, 'Huge'),
 ];

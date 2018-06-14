@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'about.dart';
 import 'scales.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gallery/styles/themes.dart';
+import '../styles/themes.dart';
 
-class GalleryOptions {
-  GalleryOptions({
+class Options {
+  Options({
     this.theme,
     this.textScaleFactor,
     this.textDirection: TextDirection.ltr,
@@ -16,7 +17,7 @@ class GalleryOptions {
   });
 
   final GalleryTheme theme;
-  final GalleryTextScaleValue textScaleFactor;
+  final TextScaleValue textScaleFactor;
   final TextDirection textDirection;
   final double timeDilation;
   final TargetPlatform platform;
@@ -24,9 +25,9 @@ class GalleryOptions {
   final bool showRasterCacheImagesCheckerboard;
   final bool showOffscreenLayersCheckerboard;
 
-  GalleryOptions copyWith({
+  Options copyWith({
     GalleryTheme theme,
-    GalleryTextScaleValue textScaleFactor,
+    TextScaleValue textScaleFactor,
     TextDirection textDirection,
     double timeDilation,
     TargetPlatform platform,
@@ -34,7 +35,7 @@ class GalleryOptions {
     bool showRasterCacheImagesCheckerboard,
     bool showOffscreenLayersCheckerboard,
   }) {
-    return GalleryOptions(
+    return Options(
       theme: theme ?? this.theme,
       textScaleFactor: textScaleFactor ?? this.textScaleFactor,
       textDirection: textDirection ?? this.textDirection,
@@ -81,15 +82,15 @@ class GalleryOptions {
   }
 }
 
-class GalleryOptionsPage extends StatelessWidget {
-  const GalleryOptionsPage({
+class OptionsPage extends StatelessWidget {
+  const OptionsPage({
     this.options,
     this.onOptionsChanged,
     this.onSendFeedback,
   });
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
   final VoidCallback onSendFeedback;
 
   @override
@@ -232,8 +233,8 @@ class _Heading extends StatelessWidget {
 class _ThemeItem extends StatelessWidget {
   const _ThemeItem(this.options, this.onOptionsChanged);
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
 
   @override
   Widget build(BuildContext context) => _BooleanItem(
@@ -250,8 +251,8 @@ class _ThemeItem extends StatelessWidget {
 class _TextScaleFactorItem extends StatelessWidget {
   const _TextScaleFactorItem(this.options, this.onOptionsChanged);
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
 
   @override
   Widget build(BuildContext context) => _OptionsItem(
@@ -269,12 +270,12 @@ class _TextScaleFactorItem extends StatelessWidget {
                 ],
               ),
             ),
-            PopupMenuButton<GalleryTextScaleValue>(
+            PopupMenuButton<TextScaleValue>(
               padding: EdgeInsetsDirectional.only(end: 16.0),
               icon: Icon(Icons.arrow_drop_down),
-              itemBuilder: (context) => kAllGalleryTextScaleValues
+              itemBuilder: (context) => kAllTextScaleValues
                   .map(
-                    (scaleValue) => PopupMenuItem<GalleryTextScaleValue>(
+                    (scaleValue) => PopupMenuItem<TextScaleValue>(
                           value: scaleValue,
                           child: Text(scaleValue.label),
                         ),
@@ -292,8 +293,8 @@ class _TextScaleFactorItem extends StatelessWidget {
 class _TextDirectionItem extends StatelessWidget {
   const _TextDirectionItem(this.options, this.onOptionsChanged);
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
 
   @override
   Widget build(BuildContext context) => _BooleanItem(
@@ -310,8 +311,8 @@ class _TextDirectionItem extends StatelessWidget {
 class _TimeDilationItem extends StatelessWidget {
   const _TimeDilationItem(this.options, this.onOptionsChanged);
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
 
   @override
   Widget build(BuildContext context) => _BooleanItem(
@@ -328,8 +329,8 @@ class _TimeDilationItem extends StatelessWidget {
 class _PlatformItem extends StatelessWidget {
   const _PlatformItem(this.options, this.onOptionsChanged);
 
-  final GalleryOptions options;
-  final ValueChanged<GalleryOptions> onOptionsChanged;
+  final Options options;
+  final ValueChanged<Options> onOptionsChanged;
 
   @override
   Widget build(BuildContext context) => _OptionsItem(

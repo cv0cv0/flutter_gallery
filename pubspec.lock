@@ -76,6 +76,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_gallery_assets:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "43590e625ab1b07f6a5809287ce16f7e61d9e165"
+      resolved-ref: "43590e625ab1b07f6a5809287ce16f7e61d9e165"
+      url: "https://github.com/yy1300326388/gallery-assets-china"
+    source: git
+    version: "0.0.26"
   flutter_test:
     dependency: "direct dev"
     description: flutter
