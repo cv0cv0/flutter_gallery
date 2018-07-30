@@ -6,6 +6,7 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 
 import 'package:url_launcher/url_launcher.dart';
 
+import 'pages/home_page.dart';
 import 'styles/themes.dart';
 import 'utils/options.dart';
 import 'utils/routes.dart';
@@ -21,6 +22,7 @@ class App extends StatefulWidget {
     this.enableRasterCacheImagesCheckerboard: true,
     this.enableOffscreenLayersCheckerboard: true,
     this.onSendFeedback,
+    this.testMode: false,
   });
 
   final UpdateUrlFetcher updateUrlFetcher;
@@ -28,6 +30,7 @@ class App extends StatefulWidget {
   final bool enableRasterCacheImagesCheckerboard;
   final bool enableOffscreenLayersCheckerboard;
   final VoidCallback onSendFeedback;
+  final bool testMode;
 
   @override
   State<StatefulWidget> createState() => _AppState();
@@ -49,9 +52,21 @@ class _AppState extends State<App> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        theme: _options.theme.data.copyWith(platform: _options.platform),
+        title: 'Flutter Gallery',
+        color: Colors.grey,
+        showPerformanceOverlay: _options.showPerformanceOverlay,
+        checkerboardOffscreenLayers: _options.showOffscreenLayersCheckerboard,
+        checkerboardRasterCacheImages:
+            _options.showRasterCacheImagesCheckerboard,
+        routes: _buildRoutes(),
+        builder: (context, child) => Directionality(
+              textDirection: _options.textDirection,
+              child: _applyTextScaleFactor(child),
+            ),
+        home: _buildHome(),
+      );
 
   @override
   void dispose() {
@@ -62,28 +77,51 @@ class _AppState extends State<App> {
 
   Map<String, WidgetBuilder> _buildRoutes() => Map.fromIterable(
         kAllRoutes,
-        key: (route) => '${route.routeName}',
+        key: (route) => route.routeName,
         value: (route) => route.buildRoute,
       );
 
+  Widget _applyTextScaleFactor(Widget child) => Builder(
+        builder: (context) => MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                    textScaleFactor: _options.textScaleFactor.scale,
+                  ),
+              child: child,
+            ),
+      );
+
+  Widget _buildHome() {
+    Widget home = HomePage(
+      testMode: widget.testMode,
+      optionsPage: OptionsPage(
+        options: _options,
+        onOptionsChanged: _handleOptionsChanged,
+        onSendFeedback: widget.onSendFeedback ??
+            () => launch('https://github.com/flutter/flutter/issues/new',
+                forceSafariVC: false),
+      ),
+    );
+
+    if (widget.updateUrlFetcher != null)
+      home = Updater(
+        updateUrlFetcher: widget.updateUrlFetcher,
+        child: home,
+      );
+
+    return home;
+  }
+
   void _handleOptionsChanged(Options newOptions) => setState(() {
-        if (_options.timeDilation != newOptions.textDirection) {
+        if (_options.timeDilation != newOptions.timeDilation) {
           _timeDilationTimer?.cancel();
           _timeDilationTimer = null;
           if (newOptions.timeDilation > 1.0)
             _timeDilationTimer = Timer(Duration(milliseconds: 150),
                 () => timeDilation = newOptions.timeDilation);
+          else
+            timeDilation = newOptions.timeDilation;
         }
 
         _options = newOptions;
       });
-
-      Widget _applyTextScaleFactor(Widget child)=>Builder(
-        builder: (context)=>MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-            textScaleFactor: _options.textScaleFactor.scale,
-          ),
-          child: child,
-        ),
-      );
 }

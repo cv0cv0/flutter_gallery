@@ -2,47 +2,47 @@ import 'package:flutter/material.dart';
 
 import 'icons.dart';
 
-final List<Routes> kAllRoutes = _buildRoutes();
+final kAllRoutes = _buildRoutes();
 
-final kAllCategorys = kAllRoutes.map((route) => route.category).toSet();
+final kAllRouteCategorys = kAllRoutes.map((route) => route.category).toSet();
 
-final kCategoryToRoutes = Map.fromIterable(
-  kAllCategorys,
+final kRouteCategoryToRoutes = Map.fromIterable(
+  kAllRouteCategorys,
   value: (category) =>
       kAllRoutes.where((route) => route.category == category).toList(),
 );
 
-List<Routes> _buildRoutes() {
+List<GalleryRoute> _buildRoutes() {
   //TODO
 }
 
-const _kStudies = Category._(
+const _kStudies = RouteCategory._(
   name: 'Studies',
   icon: GalleryIcons.animation,
 );
 
-const _kStyle = Category._(
+const _kStyle = RouteCategory._(
   name: 'Style',
   icon: GalleryIcons.custom_typography,
 );
 
-const _kMaterial = Category._(
+const _kMaterial = RouteCategory._(
   name: 'Material',
   icon: GalleryIcons.category_mdc,
 );
 
-const _kCupertino = Category._(
+const _kCupertino = RouteCategory._(
   name: 'Cupertino',
   icon: GalleryIcons.phone_iphone,
 );
 
-const _kMedia = Category._(
+const _kMedia = RouteCategory._(
   name: 'Media',
   icon: GalleryIcons.drive_video,
 );
 
-class Routes {
-  const Routes({
+class GalleryRoute {
+  const GalleryRoute({
     @required this.title,
     @required this.icon,
     this.subtitle,
@@ -57,7 +57,7 @@ class Routes {
   final String title;
   final IconData icon;
   final String subtitle;
-  final Category category;
+  final RouteCategory category;
   final String routeName;
   final WidgetBuilder buildRoute;
 
@@ -67,8 +67,8 @@ class Routes {
   }
 }
 
-class Category {
-  const Category._({@required this.name, @required this.icon});
+class RouteCategory {
+  const RouteCategory._({@required this.name, @required this.icon});
 
   final String name;
   final IconData icon;
