@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'about.dart';
 import 'scales.dart';
-import '../styles/themes.dart';
+import '../style/themes.dart';
 
 class Options {
   Options({

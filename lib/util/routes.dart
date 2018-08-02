@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'all_route.dart';
 import 'icons.dart';
 
 final kAllRoutes = _buildRoutes();
@@ -12,9 +13,16 @@ final kRouteCategoryToRoutes = Map.fromIterable(
       kAllRoutes.where((route) => route.category == category).toList(),
 );
 
-List<GalleryRoute> _buildRoutes() {
-  //TODO
-}
+List<GalleryRoute> _buildRoutes() => [
+  GalleryRoute(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: GalleryIcons.text_fields_alt,
+    category: _kMaterial,
+    routeName: TextFormFieldPage.routeName,
+    buildRoute: (context)=>TextFormFieldPage(),
+  ),
+];
 
 const _kStudies = RouteCategory._(
   name: 'Studies',

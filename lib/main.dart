@@ -6,12 +6,12 @@ import 'package:flutter/scheduler.dart' show timeDilation;
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'pages/home_page.dart';
-import 'styles/themes.dart';
-import 'utils/options.dart';
-import 'utils/routes.dart';
-import 'utils/scales.dart';
-import 'utils/updater.dart';
+import 'page/home_page.dart';
+import 'style/themes.dart';
+import 'util/options.dart';
+import 'util/routes.dart';
+import 'util/scales.dart';
+import 'util/updater.dart';
 
 void main() => runApp(App());
 

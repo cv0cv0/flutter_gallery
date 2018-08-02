@@ -4,8 +4,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import 'backdrop.dart';
-import '../utils/routes.dart';
+import '../widget/backdrop.dart';
+import '../util/routes.dart';
 
 const String _kAssetsPackage = 'flutter_gallery_assets';
 const Color _kFlutterBlue = const Color(0xFF003D75);
@@ -77,7 +77,8 @@ class _HomePageState extends State<HomePage>
           },
           child: Backdrop(
             backTitle: Text('Options'),
-            backLayer: AnimatedSwitcher(
+            backLayer: widget.optionsPage,
+            frontAction: AnimatedSwitcher(
               duration: _kFrontLayerSwitchDuration,
               switchOutCurve: switchCurve,
               switchInCurve: switchCurve,
@@ -120,12 +121,13 @@ class _HomePageState extends State<HomePage>
     }());
 
     if (HomePage.showPreviewBanner) {
-      home=Stack(
+      home = Stack(
         fit: StackFit.expand,
         children: <Widget>[
           home,
           FadeTransition(
-            opacity: CurvedAnimation(parent: _controller,curve: Curves.easeInOut),
+            opacity:
+                CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
             child: Banner(
               message: 'PREVIEW',
               location: BannerLocation.topEnd,

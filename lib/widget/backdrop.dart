@@ -7,7 +7,7 @@ const _kFrontHeadingHeight = 32.0;
 const _kFrontClosedHeight = 92.0;
 const _kBackAppBarHeight = 56.0;
 
-final _kFrontHeadingBevel = BorderRadiusTween(
+final _kFrontHeadingBevelRadius = BorderRadiusTween(
   begin: BorderRadius.only(
     topLeft: Radius.circular(12.0),
     topRight: Radius.circular(12.0),
@@ -63,14 +63,99 @@ class _BackdropState extends State<Backdrop>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => LayoutBuilder(builder: _buildStack);
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  Widget _buildStack(BuildContext context, BoxConstraints constraints) {
+    final frontRelativeRect = RelativeRectTween(
+      begin: RelativeRect.fromLTRB(
+          0.0, constraints.biggest.height - _kFrontClosedHeight, 0.0, 0.0),
+      end: RelativeRect.fromLTRB(0.0, _kBackAppBarHeight, 0.0, 0.0),
+    ).animate(_controller);
+
+    final layers = <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _BackAppBar(
+            leading: widget.frontAction,
+            title: _CrossFadeTransition(
+              progress: _controller,
+              alignment: AlignmentDirectional.centerStart,
+              child0: Semantics(namesRoute: true, child: widget.frontTitle),
+              child1: Semantics(namesRoute: true, child: widget.backTitle),
+            ),
+            trailing: IconButton(
+              onPressed: _toggleFrontLayer,
+              tooltip: 'Toggle options page',
+              icon: AnimatedIcon(
+                icon: AnimatedIcons.close_menu,
+                progress: _controller,
+              ),
+            ),
+          ),
+          Expanded(
+            child: _TappableWhileStatusls(
+              AnimationStatus.dismissed,
+              controller: _controller,
+              child: widget.backLayer,
+            ),
+          ),
+        ],
+      ),
+      PositionedTransition(
+        rect: frontRelativeRect,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) => PhysicalShape(
+                elevation: 12.0,
+                color: Theme.of(context).canvasColor,
+                clipper: ShapeBorderClipper(
+                  shape: BeveledRectangleBorder(
+                    borderRadius:
+                        _kFrontHeadingBevelRadius.lerp(_controller.value),
+                  ),
+                ),
+                child: child,
+              ),
+          child: _TappableWhileStatusls(
+            AnimationStatus.completed,
+            controller: _controller,
+            child: FadeTransition(
+              opacity: _frontOpacity,
+              child: widget.frontLayer,
+            ),
+          ),
+        ),
+      ),
+    ];
+
+    if (widget.frontHeading != null) {
+      layers.add(
+        PositionedTransition(
+          rect: frontRelativeRect,
+          child: ExcludeSemantics(
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: _toggleFrontLayer,
+                onVerticalDragUpdate: _handlerDragUpdate,
+                onVerticalDragEnd: _handlerDragEnd,
+                child: widget.frontHeading,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return Stack(children: layers);
   }
 
   double get _backdropHeight {
@@ -95,6 +180,13 @@ class _BackdropState extends State<Backdrop>
       _controller.fling(velocity: math.max(-2.0, -flingVelocity));
     else
       _controller.fling(velocity: _controller.value < 0.5 ? -2.0 : 2.0);
+  }
+
+  void _toggleFrontLayer() {
+    final status = _controller.status;
+    final isOpen = status == AnimationStatus.completed ||
+        status == AnimationStatus.forward;
+    _controller.fling(velocity: isOpen ? -2.0 : 2.0);
   }
 }
 
