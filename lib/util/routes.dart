@@ -5,10 +5,10 @@ import 'icons.dart';
 
 final kAllRoutes = _buildRoutes();
 
-final kAllRouteCategorys = kAllRoutes.map((route) => route.category).toSet();
+final kAllRouteCategories = kAllRoutes.map((route) => route.category).toSet();
 
 final kRouteCategoryToRoutes = Map.fromIterable(
-  kAllRouteCategorys,
+  kAllRouteCategories,
   value: (category) =>
       kAllRoutes.where((route) => route.category == category).toList(),
 );
@@ -18,7 +18,39 @@ List<GalleryRoute> _buildRoutes() => [
     title: 'Text fields',
     subtitle: 'Single line of editable text and numbers',
     icon: GalleryIcons.text_fields_alt,
+    category: _kStudies,
+    routeName: TextFormFieldPage.routeName,
+    buildRoute: (context)=>TextFormFieldPage(),
+  ),
+  GalleryRoute(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: GalleryIcons.text_fields_alt,
+    category: _kStyle,
+    routeName: TextFormFieldPage.routeName,
+    buildRoute: (context)=>TextFormFieldPage(),
+  ),
+  GalleryRoute(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: GalleryIcons.text_fields_alt,
     category: _kMaterial,
+    routeName: TextFormFieldPage.routeName,
+    buildRoute: (context)=>TextFormFieldPage(),
+  ),
+  GalleryRoute(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: GalleryIcons.text_fields_alt,
+    category: _kCupertino,
+    routeName: TextFormFieldPage.routeName,
+    buildRoute: (context)=>TextFormFieldPage(),
+  ),
+  GalleryRoute(
+    title: 'Text fields',
+    subtitle: 'Single line of editable text and numbers',
+    icon: GalleryIcons.text_fields_alt,
+    category: _kMedia,
     routeName: TextFormFieldPage.routeName,
     buildRoute: (context)=>TextFormFieldPage(),
   ),

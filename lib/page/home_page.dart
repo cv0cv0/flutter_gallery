@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage>
               child: _category != null
                   ? _RoutesPage(_category)
                   : _CategoriesPage(
-                      categories: kAllRouteCategorys,
+                      categories: kAllRouteCategories,
                       onCategoryTop: (category) =>
                           setState(() => _category = category),
                     ),
@@ -298,7 +298,7 @@ class _CategoriesPage extends StatelessWidget {
                 children: List<Widget>.generate(rowCount, (rowIndex) {
                   final columnCountForRow = rowIndex == rowCount - 1
                       ? categories.length -
-                          columnCount +
+                          columnCount *
                           math.max(0, rowCount - 1)
                       : columnCount;
 

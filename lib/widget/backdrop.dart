@@ -155,7 +155,7 @@ class _BackdropState extends State<Backdrop>
       );
     }
 
-    return Stack(children: layers);
+    return Stack(key: _backdropKey, children: layers);
   }
 
   double get _backdropHeight {
