@@ -128,9 +128,9 @@ class OptionsPage extends StatelessWidget {
   }
 
   List<Widget> _enabledDiagnosticItems() {
-    if (options.showOffscreenLayersCheckerboard ??
+    if (options.showOffscreenLayersCheckerboard == null ??
         options.showRasterCacheImagesCheckerboard ??
-        options.showPerformanceOverlay == null) return const <Widget>[];
+        options.showPerformanceOverlay) return const <Widget>[];
 
     final items = <Widget>[
       const Divider(),
