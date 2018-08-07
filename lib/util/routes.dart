@@ -14,47 +14,47 @@ final kRouteCategoryToRoutes = Map.fromIterable(
 );
 
 List<GalleryRoute> _buildRoutes() => [
-  GalleryRoute(
-    title: 'Text fields',
-    subtitle: 'Single line of editable text and numbers',
-    icon: GalleryIcons.text_fields_alt,
-    category: _kStudies,
-    routeName: TextFormFieldPage.routeName,
-    buildRoute: (context)=>TextFormFieldPage(),
-  ),
-  GalleryRoute(
-    title: 'Text fields',
-    subtitle: 'Single line of editable text and numbers',
-    icon: GalleryIcons.text_fields_alt,
-    category: _kStyle,
-    routeName: TextFormFieldPage.routeName,
-    buildRoute: (context)=>TextFormFieldPage(),
-  ),
-  GalleryRoute(
-    title: 'Text fields',
-    subtitle: 'Single line of editable text and numbers',
-    icon: GalleryIcons.text_fields_alt,
-    category: _kMaterial,
-    routeName: TextFormFieldPage.routeName,
-    buildRoute: (context)=>TextFormFieldPage(),
-  ),
-  GalleryRoute(
-    title: 'Text fields',
-    subtitle: 'Single line of editable text and numbers',
-    icon: GalleryIcons.text_fields_alt,
-    category: _kCupertino,
-    routeName: TextFormFieldPage.routeName,
-    buildRoute: (context)=>TextFormFieldPage(),
-  ),
-  GalleryRoute(
-    title: 'Text fields',
-    subtitle: 'Single line of editable text and numbers',
-    icon: GalleryIcons.text_fields_alt,
-    category: _kMedia,
-    routeName: TextFormFieldPage.routeName,
-    buildRoute: (context)=>TextFormFieldPage(),
-  ),
-];
+      GalleryRoute(
+        title: 'Text fields',
+        subtitle: 'Single line of editable text and numbers',
+        icon: GalleryIcons.text_fields_alt,
+        category: _kStudies,
+        routeName: TextFormFieldPage.routeName,
+        buildRoute: (context) => TextFormFieldPage(),
+      ),
+      GalleryRoute(
+        title: 'Text fields',
+        subtitle: 'Single line of editable text and numbers',
+        icon: GalleryIcons.text_fields_alt,
+        category: _kStyle,
+        routeName: TextFormFieldPage.routeName,
+        buildRoute: (context) => TextFormFieldPage(),
+      ),
+      GalleryRoute(
+        title: 'Text fields',
+        subtitle: 'Single line of editable text and numbers',
+        icon: GalleryIcons.text_fields_alt,
+        category: _kMaterial,
+        routeName: TextFormFieldPage.routeName,
+        buildRoute: (context) => TextFormFieldPage(),
+      ),
+      GalleryRoute(
+        title: 'Text fields',
+        subtitle: 'Single line of editable text and numbers',
+        icon: GalleryIcons.text_fields_alt,
+        category: _kCupertino,
+        routeName: TextFormFieldPage.routeName,
+        buildRoute: (context) => TextFormFieldPage(),
+      ),
+      GalleryRoute(
+        title: 'Video',
+        subtitle: 'Video playback',
+        icon: GalleryIcons.drive_video,
+        category: _kMedia,
+        routeName: VideoPage.routeName,
+        buildRoute: (context) => VideoPage(),
+      ),
+    ];
 
 const _kStudies = RouteCategory._(
   name: 'Studies',
