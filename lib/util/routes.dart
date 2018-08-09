@@ -46,6 +46,16 @@ List<GalleryRoute> _buildRoutes() => [
         routeName: TextFormFieldPage.routeName,
         buildRoute: (context) => TextFormFieldPage(),
       ),
+
+      // Media
+      GalleryRoute(
+        title: 'Animated images',
+        subtitle: 'GIF and WebP animations',
+        icon: GalleryIcons.animation,
+        category: _kMedia,
+        routeName: ImagesPage.routeName,
+        buildRoute: (context) => ImagesPage(),
+      ),
       GalleryRoute(
         title: 'Video',
         subtitle: 'Video playback',
