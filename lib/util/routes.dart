@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../style/icons.dart';
 import 'all_route.dart';
-import 'icons.dart';
 
 final kAllRoutes = _buildRoutes();
 
@@ -38,13 +38,14 @@ List<GalleryRoute> _buildRoutes() => [
         routeName: TextFormFieldPage.routeName,
         buildRoute: (context) => TextFormFieldPage(),
       ),
+
+      // Cupertino
       GalleryRoute(
-        title: 'Text fields',
-        subtitle: 'Single line of editable text and numbers',
-        icon: GalleryIcons.text_fields_alt,
+        title: 'Activity Indicator',
+        icon: GalleryIcons.cupertino_progress,
         category: _kCupertino,
-        routeName: TextFormFieldPage.routeName,
-        buildRoute: (context) => TextFormFieldPage(),
+        routeName: CupertinaActivityIndicatorPage.routeName,
+        buildRoute: (context) => CupertinaActivityIndicatorPage(),
       ),
 
       // Media

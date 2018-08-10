@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../widget/code_component.dart';
+import '../../widget/code_component.dart';
 
 class ImagesPage extends StatelessWidget {
-  static const routeName='/images';
+  static const routeName='/media/images';
 
   @override
   Widget build(BuildContext context) => TabbedComponentScaffold(

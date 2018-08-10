@@ -3,15 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
-
 import 'package:url_launcher/url_launcher.dart';
 
 import 'page/home_page.dart';
 import 'style/themes.dart';
-import 'util/options.dart';
 import 'util/routes.dart';
 import 'util/scales.dart';
-import 'util/updater.dart';
+import 'widget/options.dart';
+import 'widget/updater.dart';
 
 void main() => runApp(App());
 

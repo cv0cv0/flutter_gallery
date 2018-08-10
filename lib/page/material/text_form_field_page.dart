@@ -3,12 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../model/person.dart';
-import '../util/phone_number_formatter.dart';
-import '../widget/password_field.dart';
+import '../../util/phone_number_formatter.dart';
+import '../../widget/password_field.dart';
 
 class TextFormFieldPage extends StatefulWidget {
-  static const routeName = 'text_form_field';
+  static const routeName = '/material/text_form_field';
   
   @override
   State<StatefulWidget> createState() => _TextFormFieldPageState();
@@ -207,4 +206,11 @@ class _TextFormFieldPageState extends State<TextFormFieldPage> {
       content: Text(value),
     ));
   }
+}
+
+class Person {
+  var name = '';
+  var phoneNumber = '';
+  var email = '';
+  var password = '';
 }
