@@ -14,13 +14,14 @@ final kRouteCategoryToRoutes = Map.fromIterable(
 );
 
 List<GalleryRoute> _buildRoutes() => [
+      // Studies
       GalleryRoute(
-        title: 'Text fields',
-        subtitle: 'Single line of editable text and numbers',
-        icon: GalleryIcons.text_fields_alt,
+        title: 'Pesto',
+        subtitle: 'Simple recipe browser',
+        icon: Icons.adjust,
         category: _kStudies,
-        routeName: TextFormFieldPage.routeName,
-        buildRoute: (context) => TextFormFieldPage(),
+        routeName: PestoPage.routeName,
+        buildRoute: (context) => const PestoPage(),
       ),
       GalleryRoute(
         title: 'Text fields',
@@ -30,13 +31,15 @@ List<GalleryRoute> _buildRoutes() => [
         routeName: TextFormFieldPage.routeName,
         buildRoute: (context) => TextFormFieldPage(),
       ),
+
+      // Material
       GalleryRoute(
         title: 'Text fields',
         subtitle: 'Single line of editable text and numbers',
         icon: GalleryIcons.text_fields_alt,
         category: _kMaterial,
         routeName: TextFormFieldPage.routeName,
-        buildRoute: (context) => TextFormFieldPage(),
+        buildRoute: (context) => const TextFormFieldPage(),
       ),
 
       // Cupertino
@@ -63,7 +66,7 @@ List<GalleryRoute> _buildRoutes() => [
         icon: GalleryIcons.drive_video,
         category: _kMedia,
         routeName: VideoPage.routeName,
-        buildRoute: (context) => VideoPage(),
+        buildRoute: (context) => const VideoPage(),
       ),
     ];
 

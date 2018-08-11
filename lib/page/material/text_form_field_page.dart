@@ -7,6 +7,8 @@ import '../../util/phone_number_formatter.dart';
 import '../../widget/password_field.dart';
 
 class TextFormFieldPage extends StatefulWidget {
+  const TextFormFieldPage();
+
   static const routeName = '/material/text_form_field';
   
   @override

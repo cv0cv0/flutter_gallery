@@ -10,6 +10,8 @@ const String beeUri =
     'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4';
 
 class VideoPage extends StatefulWidget {
+  const VideoPage();
+
   static const routeName = '/media/video';
 
   @override
