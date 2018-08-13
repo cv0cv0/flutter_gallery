@@ -23,13 +23,15 @@ List<GalleryRoute> _buildRoutes() => [
         routeName: PestoPage.routeName,
         buildRoute: (context) => const PestoPage(),
       ),
+
+      // Style
       GalleryRoute(
-        title: 'Text fields',
-        subtitle: 'Single line of editable text and numbers',
-        icon: GalleryIcons.text_fields_alt,
+        title: 'Typography',
+        subtitle: 'All of the predefined text styles',
+        icon: GalleryIcons.custom_typography,
         category: _kStyle,
-        routeName: TextFormFieldPage.routeName,
-        buildRoute: (context) => TextFormFieldPage(),
+        routeName: TypogaphyPage.routeName,
+        buildRoute: (context) => TypogaphyPage(),
       ),
 
       // Material
