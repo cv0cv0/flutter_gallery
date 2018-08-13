@@ -35,6 +35,14 @@ List<GalleryRoute> _buildRoutes() => [
       ),
 
       // Material
+       GalleryRoute(
+        title: 'Bottom navigation',
+        subtitle: 'Bottom navigation with cross-fading views',
+        icon: GalleryIcons.bottom_navigation,
+        category: _kMaterial,
+        routeName: BottomNavigationPage.routeName,
+        buildRoute: (context) => BottomNavigationPage(),
+      ),
       GalleryRoute(
         title: 'Text fields',
         subtitle: 'Single line of editable text and numbers',
