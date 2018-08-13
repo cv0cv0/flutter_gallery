@@ -345,9 +345,9 @@ class _RecipePageState extends State<RecipePage> {
                 expandedHeight: appBarHeight - _kFabHalfSize,
                 backgroundColor: Colors.transparent,
                 actions: <Widget>[
-                  PopupMenuButton(
+                  PopupMenuButton<String>(
                     onSelected: (item) {},
-                    itemBuilder: (context) => <PopupMenuItem>[
+                    itemBuilder: (context) => <PopupMenuItem<String>>[
                           _buildMenuItem(Icons.share, 'Tweet recipe'),
                           _buildMenuItem(Icons.email, 'Email recipe'),
                           _buildMenuItem(Icons.message, 'Message recipe'),
@@ -394,7 +394,8 @@ class _RecipePageState extends State<RecipePage> {
     );
   }
 
-  PopupMenuItem _buildMenuItem(IconData icon, String label) => PopupMenuItem(
+  PopupMenuItem<String> _buildMenuItem(IconData icon, String label) =>
+      PopupMenuItem(
         child: Row(
           children: <Widget>[
             Padding(
@@ -490,8 +491,8 @@ class RecipeSheet extends StatelessWidget {
                     )
                   ],
                 ))
-                ..addAll(recipe.steps.map(
-                    (step) => _buildTableRow(step.duration, step.description))),
+                ..addAll(recipe.steps.map((step) =>
+                    _buildTableRow(step.duration ?? '', step.description))),
             ),
           ),
         ),
