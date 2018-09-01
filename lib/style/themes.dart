@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 final kDarkGalleryTheme = GalleryTheme._('Dark', _buildDarkTheme());
 final kLightGalleryTheme = GalleryTheme._('Light', _buildLightTheme());
 
+final _primaryColor = Color(0xFF0175C2);
+
 ThemeData _buildDarkTheme() {
-  const primaryColor = Color(0xFF0175C2);
   final base = ThemeData.dark();
   return base.copyWith(
-    primaryColor: primaryColor,
-    buttonColor: primaryColor,
+    primaryColor: _primaryColor,
+    buttonColor: _primaryColor,
     indicatorColor: Colors.white,
     accentColor: Color(0xFF13B9FD),
     canvasColor: Color(0xFF202124),
@@ -25,11 +26,10 @@ ThemeData _buildDarkTheme() {
 }
 
 ThemeData _buildLightTheme() {
-  const primaryColor = Color(0xFF0175C2);
   final base = ThemeData.light();
   return base.copyWith(
-    primaryColor: primaryColor,
-    buttonColor: primaryColor,
+    primaryColor: _primaryColor,
+    buttonColor: _primaryColor,
     indicatorColor: Colors.white,
     splashColor: Colors.white24,
     splashFactory: InkRipple.splashFactory,

@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import '../widget/backdrop.dart';
 import '../util/routes.dart';
 
-const String _kAssetsPackage = 'flutter_gallery_assets';
-const Color _kFlutterBlue = const Color(0xFF003D75);
-const double _kItemHeight = 64.0;
-const Duration _kFrontLayerSwitchDuration = const Duration(milliseconds: 300);
+const _kAssetsPackage = 'flutter_gallery_assets';
+const _kFlutterBlue = const Color(0xFF003D75);
+const _kItemHeight = 64.0;
+const _kFrontLayerSwitchDuration = const Duration(milliseconds: 300);
 
 class HomePage extends StatefulWidget {
   static bool showPreviewBanner = true;
@@ -156,7 +156,7 @@ class _FlutterLogo extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image:
-                  AssetImage('white_logo/logo.png', package: _kAssetsPackage),
+                  AssetImage('logos/flutter_white/logo.png', package: _kAssetsPackage),
             ),
           ),
         ),
