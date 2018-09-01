@@ -60,6 +60,13 @@ List<GalleryRoute> _buildRoutes() => [
         routeName: CupertinaActivityIndicatorPage.routeName,
         buildRoute: (context) => CupertinaActivityIndicatorPage(),
       ),
+            GalleryRoute(
+        title: 'Pickers',
+        icon: GalleryIcons.event,
+        category: _kCupertino,
+        routeName: CupertinoPickerPage.routeName,
+        buildRoute: (context) => CupertinoPickerPage(),
+      ),
 
       // Media
       GalleryRoute(
